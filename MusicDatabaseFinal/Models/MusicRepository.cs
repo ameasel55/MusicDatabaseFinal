@@ -22,6 +22,12 @@ namespace MusicDatabaseFinal.Models
         {
             return _conn.QuerySingle<Music>("SELECT * FROM MUSIC WHERE ID = @id", new { id = id });
         }
+
+        public void UpdateMusic(Music music)
+        {
+            _conn.Execute("UPDATE MUSIC SET ArtistName = @artistName, AlbumName = @albumName, YearReleased = @yearReleased, Genre = @genre, MyRating = @myRating WHERE ID = @id",
+                    new { artistName = music.ArtistName, albumName = music.AlbumName, yearReleased = music.YearReleased, genre = music.Genre, myRating = music.MyRating, id = music.ID });
+        }
     }
 }
 

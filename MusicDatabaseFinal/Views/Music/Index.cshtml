@@ -14,8 +14,8 @@
     @foreach (var music in @Model)
     {
         <tr>
-            <td>@music.ID</td>
-            <td><a href=/Product/ViewProduct/@music.ArtistName>@music.ArtistName</a></td>
+            <td><a href=/Music/ViewMusic/@music.ID>@music.ID</a></td>
+            <td>@music.ArtistName</td>
             <td>@music.AlbumName</td>
             <td>@music.YearReleased</td>
             <td>@music.Genre</td>

@@ -1,6 +1,6 @@
 ﻿@model Music
 
-<h3>@Model.ArtistName Information</h3>
+<h3>@Model.ID Information</h3>
 
 <table class="table">
     <tr>
@@ -20,3 +20,7 @@
         <td>@Model.MyRating</td>
     </tr>
 </table>
+
+<div style="display: block">
+    <a href="/Music/UpdateMusic/@Model.ID">Edit this entry</a>
+</div>

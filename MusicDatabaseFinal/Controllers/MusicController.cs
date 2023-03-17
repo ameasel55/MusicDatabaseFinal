@@ -30,6 +30,23 @@ namespace MusicDatabaseFinal.Controllers
             var product = repo.GetMusic(id);
             return View(product);
         }
+
+        public IActionResult UpdateMusic(int id)
+        {
+            Music music = repo.GetMusic(id);
+            if (music == null)
+            {
+                return View("MusicNotFound");
+            }
+            return View(music);
+        }
+
+        public IActionResult UpdateMusicToDatabase(Music music)
+        {
+            repo.UpdateMusic(music);
+
+            return RedirectToAction("ViewMusic", new { id = music.ID });
+        }
     }
 }
 
