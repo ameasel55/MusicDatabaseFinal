@@ -47,6 +47,18 @@ namespace MusicDatabaseFinal.Controllers
 
             return RedirectToAction("ViewMusic", new { id = music.ID });
         }
+
+        public IActionResult InsertMusic()
+        {
+            var music = repo.AssignMusic();
+            return View(music);
+        }
+
+        public IActionResult InsertMusicToDatabase(Music musicToInsert)
+        {
+            repo.InsertMusic(musicToInsert);
+            return RedirectToAction("Index");
+        }
     }
 }
 

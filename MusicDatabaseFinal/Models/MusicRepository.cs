@@ -13,6 +13,14 @@ namespace MusicDatabaseFinal.Models
             _conn = conn;
 		}
 
+        public Music AssignMusic()
+        {
+            var musicList = GetMusic();
+            var music = new Music();
+            music.Musics = musicList;
+            return music;
+        }
+
         public IEnumerable<Music> GetAllMusic()
         {
             return _conn.Query<Music>("SELECT * FROM MUSIC;");
@@ -21,6 +29,17 @@ namespace MusicDatabaseFinal.Models
         public Music GetMusic(int id)
         {
             return _conn.QuerySingle<Music>("SELECT * FROM MUSIC WHERE ID = @id", new { id = id });
+        }
+
+        public IEnumerable<Music> GetMusic()
+        {
+            return _conn.Query<Music>("SELECT * FROM music;");
+        }
+
+        public void InsertMusic(Music musicToInsert)
+        {
+            _conn.Execute("INSERT INTO music (ArtistName, AlbumName, YearReleased, Genre, MyRating);",
+                new {artistName = musicToInsert.ArtistName, albumName = musicToInsert.AlbumName, yearReleased = musicToInsert.YearReleased, genre = musicToInsert.Genre, myRating = musicToInsert.MyRating });
         }
 
         public void UpdateMusic(Music music)

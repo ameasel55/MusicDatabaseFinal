@@ -17,6 +17,8 @@ namespace MusicDatabaseFinal.Models
         public string Genre { get; set; }
 
         public double MyRating { get; set; }
+
+        public IEnumerable<Music> Musics { get; set; }
     }
 }
 
