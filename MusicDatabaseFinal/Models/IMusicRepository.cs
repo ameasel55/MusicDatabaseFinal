@@ -9,6 +9,7 @@ namespace MusicDatabaseFinal.Models
         public void InsertMusic(Music musicToInsert);
         public IEnumerable<Music> GetMusic();
         public Music AssignMusic();
+		public void DeleteMusic(Music music);
     }
 }
 

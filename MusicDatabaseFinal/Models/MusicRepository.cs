@@ -38,7 +38,7 @@ namespace MusicDatabaseFinal.Models
 
         public void InsertMusic(Music musicToInsert)
         {
-            _conn.Execute("INSERT INTO music (ArtistName, AlbumName, YearReleased, Genre, MyRating);",
+            _conn.Execute("INSERT INTO music (ArtistName, AlbumName, YearReleased, Genre, MyRating) VALUES (@artistName, @albumName, @yearReleased, @genre, @myRating);",
                 new {artistName = musicToInsert.ArtistName, albumName = musicToInsert.AlbumName, yearReleased = musicToInsert.YearReleased, genre = musicToInsert.Genre, myRating = musicToInsert.MyRating });
         }
 
@@ -46,6 +46,11 @@ namespace MusicDatabaseFinal.Models
         {
             _conn.Execute("UPDATE MUSIC SET ArtistName = @artistName, AlbumName = @albumName, YearReleased = @yearReleased, Genre = @genre, MyRating = @myRating WHERE ID = @id",
                     new { artistName = music.ArtistName, albumName = music.AlbumName, yearReleased = music.YearReleased, genre = music.Genre, myRating = music.MyRating, id = music.ID });
+        }
+
+        public void DeleteMusic(Music music)
+        {
+            _conn.Execute("DELETE FROM MUSIC WHERE ID = @id;", new { id = music.ID });
         }
     }
 }

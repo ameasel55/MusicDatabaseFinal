@@ -18,7 +18,6 @@ namespace MusicDatabaseFinal.Controllers
             this.repo = repo;
         }
 
-
         public IActionResult Index()
         {
             var music = repo.GetAllMusic();
@@ -57,6 +56,12 @@ namespace MusicDatabaseFinal.Controllers
         public IActionResult InsertMusicToDatabase(Music musicToInsert)
         {
             repo.InsertMusic(musicToInsert);
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult DeleteMusic(Music music)
+        {
+            repo.DeleteMusic(music);
             return RedirectToAction("Index");
         }
     }
