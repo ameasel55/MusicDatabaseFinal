@@ -22,14 +22,22 @@
 </table>
 
 <div style="display: block">
-    <a href="/Music/UpdateMusic/@Model.ID">Edit this entry</a>
+    <a href="/Music/UpdateMusic/@Model.ID" style="text-shadow:1px 1px 0 #444">Edit this entry</a>
 </div>
-
+<div>
+    <a></a>
+</div>
+<div>
+    <a>OR!!</a>
+</div>
+<div>
+    <a></a>
+</div>
 <div style="display: block">
 
     @using (Html.BeginForm("DeleteMusic", "Music", "Post"))
     {
         <input type="hidden" asp-for="ID" value="@Model.ID" />
-        <input type="submit" onclick="return confirm('Are you sure?')" value="Delete this product" />
+        <input type="submit" onclick="return confirm('Are you sure?')" style="text-shadow:1px 1px 0 #444" value="Delete this entry" />
     }
 </div>
